@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Predicción Individual</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e3f2fd;
+        }
+        .container-custom {
+            max-width: 900px;
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        .header-title {
+            background: linear-gradient(90deg, #1565c0, #42a5f5);
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .form-label i {
+            color: #1565c0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5 container-custom">
+    <div class="header-title text-center">
+        <h3><i class=""></i> Predicción Individual de Riesgo Fetal</h3>
+    </div>
+
+    {% if resultado %}
+        <div class="alert alert-warning text-center">{{ resultado }}</div>
+    {% endif %}
+
+    <form action="/predecir" method="post">
+        <div class="mb-3">
+            <label class="form-label">Edad materna</label>
+            <input class="form-control" type="number" name="input1" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Índice de Masa Corporal (IMC)</label>
+            <input class="form-control" type="number" name="input2" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Edad gestacional al parto (semanas)</label>
+            <input class="form-control" type="number" name="input3" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Numero De Embarazos</label>
+            <input class="form-control" type="number" name="input4" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Numero De Partos Previos</label>
+            <input class="form-control" type="number" name="input5" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Síntoma inicial</label>
+            <input class="form-control" type="number" name="input6" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Edad gestacional al inicio de síntomas</label>
+            <input class="form-control" type="number" name="input7" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Días desde síntomas hasta parto</label>
+            <input class="form-control" type="number" name="input8" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Edad gestacional al inicio de hipertensión</label>
+            <input class="form-control" type="number" name="input9" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Días desde hipertensión hasta parto</label>
+            <input class="form-control" type="number" name="input10" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Edad gestacional al inicio de edema</label>
+            <input class="form-control" type="number" name="input11" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Días desde edema hasta parto</label>
+            <input class="form-control" type="number" name="input12" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Edad gestacional al inicio de proteinuria</label>
+            <input class="form-control" type="number" name="input13" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Días desde proteinuria hasta parto</label>
+            <input class="form-control" type="number" name="input14" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Tratamiento expectante</label>
+            <input class="form-control" type="number" name="input15" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Terapia antihipertensiva antes de hospitalización</label>
+            <input class="form-control" type="number" name="input16" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Antecedentes</label>
+            <input class="form-control" type="number" name="input17" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Presión sistólica máxima</label>
+            <input class="form-control" type="number" name="input18" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Presión diastólica máxima</label>
+            <input class="form-control" type="number" name="input19" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Razón de parto</label>
+            <input class="form-control" type="number" name="input20" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Modo de parto</label>
+            <input class="form-control" type="number" name="input21" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">BNP máximo</label>
+            <input class="form-control" type="number" name="input22" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Creatinina máxima</label>
+            <input class="form-control" type="number" name="input23" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Ácido úrico máximo</label>
+            <input class="form-control" type="number" name="input24" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Proteinuria máxima</label>
+            <input class="form-control" type="number" name="input25" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Proteínas totales máximas</label>
+            <input class="form-control" type="number" name="input26" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Albúmina máxima</label>
+            <input class="form-control" type="number" name="input27" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">ALT máxima</label>
+            <input class="form-control" type="number" name="input28" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">AST máxima</label>
+            <input class="form-control" type="number" name="input29" step="any" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Plaquetas máximas</label>
+            <input class="form-control" type="number" name="input30" step="any" required>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label">Modelo de predicción</label>
+            <select class="form-select" name="modelo" required>
+                <option value="" disabled selected>Seleccione un modelo</option>
+                <option value="logistica">Regresión Logística</option>
+                <option value="mlp">Red Neuronal MLP</option>
+                <option value="svm">Máquina de Vectores de Soporte (SVM)</option>
+                <option value="fcm">Modelo Difuso FCM</option>
+            </select>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-info text-white px-5">
+                <i class=""></i> Predecir
+            </button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
